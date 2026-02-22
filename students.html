@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生徒用ポータル - LINE公式アカウント講座</title>
+    <!-- marked.js for Markdown parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        :root {
+            --primary-bg: #fdfbf7;
+            --sidebar-bg: #EBE4D5;
+            --text-color: #333333;
+            --accent-color: #8c7a6b;
+            --code-bg: #f4f4f4;
+        }
+
+        body {
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+            color: var(--text-color);
+            background-color: var(--primary-bg);
+            line-height: 1.6;
+        }
+
+        /* Sidebar */
+        #sidebar {
+            width: 280px;
+            background-color: var(--sidebar-bg);
+            padding: 2rem 1rem;
+            box-sizing: border-box;
+            overflow-y: auto;
+            border-right: 1px solid #dcd3c6;
+            flex-shrink: 0;
+        }
+
+        .sidebar-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .nav-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-item {
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-link {
+            display: block;
+            padding: 0.8rem 1rem;
+            color: var(--text-color);
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.2s;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .nav-link.active {
+            background-color: #fff;
+            color: var(--accent-color);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            font-weight: bold;
+        }
+
+        /* Main Content */
+        #main-content {
+            flex-grow: 1;
+            padding: 3rem 4rem;
+            overflow-y: auto;
+            background-color: #fff;
+        }
+
+        .content-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Markdown Styles */
+        #markdown-view h1 {
+            color: var(--accent-color);
+            border-bottom: 2px solid var(--sidebar-bg);
+            padding-bottom: 0.5rem;
+            font-size: 1.8rem;
+        }
+
+        #markdown-view h2 {
+            color: var(--text-color);
+            margin-top: 2.5rem;
+            padding-left: 0.5rem;
+            border-left: 4px solid var(--accent-color);
+            font-size: 1.4rem;
+        }
+
+        #markdown-view h3 {
+            margin-top: 2rem;
+            font-size: 1.2rem;
+        }
+
+        #markdown-view blockquote {
+            border-left: 4px solid #ddd;
+            margin: 1.5rem 0;
+            padding: 1rem 1.5rem;
+            background-color: #f9f9f9;
+            color: #555;
+            border-radius: 0 4px 4px 0;
+        }
+
+        #markdown-view code {
+            background-color: var(--code-bg);
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-family: monospace;
+            font-size: 0.9em;
+        }
+
+        #markdown-view pre {
+            background-color: var(--code-bg);
+            padding: 1rem;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+
+        #markdown-view pre code {
+            background-color: transparent;
+            padding: 0;
+        }
+
+        #markdown-view img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin: 1.5rem 0;
+        }
+
+        /* Copy Button Utility */
+        .copy-wrapper {
+            position: relative;
+            margin: 1.5rem 0;
+        }
+
+        .copy-wrapper blockquote {
+            margin: 0 !important;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 0.4rem 0.8rem;
+            font-size: 0.8rem;
+            cursor: pointer;
+            color: #555;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            transition: all 0.2s;
+        }
+
+        .copy-btn:hover {
+            background-color: var(--primary-bg);
+            color: var(--accent-color);
+        }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+            z-index: 2000;
+        }
+
+        .toast.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+
+            #sidebar {
+                width: 100%;
+                height: 200px;
+                border-right: none;
+                border-bottom: 1px solid #dcd3c6;
+            }
+
+            #main-content {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav id="sidebar">
+        <div class="sidebar-title">生徒用マニュアル📱</div>
+        <ul class="nav-list" id="nav-list">
+            <!-- Navigation items will be generated here -->
+        </ul>
+    </nav>
+
+    <main id="main-content">
+        <div class="content-container">
+            <div id="markdown-view">
+                <h1>資料を選択してください</h1>
+                <p>左のメニューから閲覧したいステップを選んでください。</p>
+            </div>
+        </div>
+    </main>
+
+    <div id="toast" class="toast">コピーしました！</div>
+
+    <script>
+        const materials = [
+            { id: 'concept', title: '【準備1】コンセプト作成AI', file: 'student_concept_prompt.md' },
+            { id: 'profile', title: '【準備2】プロフィール設定', file: 'profile_settings.md' },
+            { id: 'step1', title: '【Step 1】通常メッセージ配信', file: 'quest_messages_step1.md' },
+            { id: 'step1_adv', title: '【Step 1応用】高度な配信', file: 'quest_messages_step1_advanced.md' },
+            { id: 'step2', title: '【Step 2】自動応答メッセージ', file: 'quest_messages_step2.md' },
+            { id: 'step3', title: '【Step 3】応用とオーディエンス', file: 'quest_messages_step3.md' },
+            { id: 'bonus', title: '【ボーナス】雨の日クーポン', file: 'quest_bonus_coupon.md' }
+        ];
+
+        const navList = document.getElementById('nav-list');
+        const markdownView = document.getElementById('markdown-view');
+        const toast = document.getElementById('toast');
+
+        // Render Navigation
+        materials.forEach(mat => {
+            const li = document.createElement('li');
+            li.className = 'nav-item';
+            const a = document.createElement('a');
+            a.href = '#' + mat.id;
+            a.className = 'nav-link';
+            a.textContent = mat.title;
+            a.onclick = (e) => loadMarkdown(mat, a);
+            li.appendChild(a);
+            navList.appendChild(li);
+        });
+
+        async function loadMarkdown(material, linkElement) {
+            // Update active state
+            document.querySelectorAll('.nav-link').forEach(el => el.classList.remove('active'));
+            if (linkElement) linkElement.classList.add('active');
+
+            try {
+                // Fetch the markdown file from the materials folder
+                const response = await fetch('materials/' + material.file);
+                if (!response.ok) throw new Error('File not found');
+
+                let text = await response.text();
+
+                // Parse markdown
+                markdownView.innerHTML = marked.parse(text);
+
+                // Add Copy Buttons to all blockquotes (since we use blockquotes for message text in our MD files)
+                // However, we only want to wrap blockquotes that contain actual message templates
+                document.querySelectorAll('#markdown-view blockquote').forEach(bq => {
+                    const wrapper = document.createElement('div');
+                    wrapper.className = 'copy-wrapper';
+
+                    // Insert wrapper before blockquote, then move blockquote into wrapper
+                    bq.parentNode.insertBefore(wrapper, bq);
+                    wrapper.appendChild(bq);
+
+                    // Create copy button
+                    const btn = document.createElement('button');
+                    btn.className = 'copy-btn';
+                    btn.textContent = '📄 テキストをコピー';
+                    btn.onclick = () => {
+                        // Get text without the button's own text
+                        const textToCopy = bq.innerText;
+                        navigator.clipboard.writeText(textToCopy).then(() => {
+                            btn.textContent = '✔️ コピーしました';
+                            toast.classList.add('show');
+                            setTimeout(() => {
+                                btn.textContent = '📄 テキストをコピー';
+                                toast.classList.remove('show');
+                            }, 2000);
+                        });
+                    };
+                    wrapper.appendChild(btn);
+                });
+
+                // Scroll to top
+                document.getElementById('main-content').scrollTop = 0;
+
+            } catch (error) {
+                markdownView.innerHTML = `<h1>エラー</h1><p>ファイル（materials/${material.file}）の読み込みに失敗しました。</p>`;
+                console.error(error);
+            }
+        }
+
+        // Handle initial load based on hash
+        window.addEventListener('DOMContentLoaded', () => {
+            const hash = window.location.hash.slice(1);
+            const initialMat = materials.find(m => m.id === hash) || materials[0];
+            const initialLink = Array.from(document.querySelectorAll('.nav-link')).find(a => a.href.endsWith('#' + initialMat.id));
+            loadMarkdown(initialMat, initialLink);
+        });
+    </script>
+</body>
+
+</html>
