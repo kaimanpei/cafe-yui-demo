@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News - 古民家カフェ 結（ゆい）</title>
+    <style>
+        :root {
+            --primary-bg: #fdfbf7;
+            --text-color: #333333;
+            --accent-color: #8c7a6b;
+            --secondary-bg: #EBE4D5;
+        }
+
+        body {
+            font-family: "Yu Mincho", "Zen Old Mincho", serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--primary-bg);
+            color: var(--text-color);
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        header {
+            background-color: rgba(253, 251, 247, 0.95);
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 1px 10px rgba(0, 0, 0, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-sizing: border-box;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 0.1em;
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .back-link {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+            border-bottom: 1px solid var(--accent-color);
+            transition: opacity 0.3s;
+        }
+
+        .back-link:hover {
+            opacity: 0.7;
+        }
+
+        .page-header {
+            padding-top: 120px;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .page-title {
+            color: var(--accent-color);
+            font-size: 2rem;
+            letter-spacing: 0.1em;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem 4rem;
+        }
+
+        .news-article {
+            background-color: #fff;
+            padding: 3rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            margin-bottom: 2rem;
+            scroll-margin-top: 100px;
+            /* Offset for fixed header when jumping to anchor */
+        }
+
+        .news-date {
+            font-size: 0.95rem;
+            color: var(--accent-color);
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-weight: bold;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .news-title {
+            font-size: 1.25rem;
+            color: var(--text-color);
+            margin: 0 0 1.5rem 0;
+            line-height: 1.6;
+            border-bottom: 1px solid #EBE4D5;
+            padding-bottom: 1rem;
+        }
+
+        .news-body {
+            font-size: 1rem;
+            white-space: pre-line;
+            color: #444;
+        }
+
+        @media (max-width: 768px) {
+            .news-article {
+                padding: 1.5rem;
+            }
+
+            .page-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="index.html" class="logo">結 -YUI-</a>
+        <a href="index.html" class="back-link">← ホームへ戻る</a>
+    </header>
+
+    <div class="page-header">
+        <h1 class="page-title">お知らせ</h1>
+    </div>
+
+    <main>
+        <article id="news-15" class="news-article">
+            <div class="news-date">2026.04.01</div>
+            <h2 class="news-title">【新メニュー】春限定「苺とピスタチオのタルト」が始まります。</h2>
+            <div class="news-body">こんにちは！古民家カフェ 結です☕️
+                春の訪れを感じる、苺の赤とピスタチオの緑が色鮮やかなタルトが新登場です🍓
+                ぽかぽか陽気の縁側で、春のティータイムをお楽しみください✨</div>
+        </article>
+
+        <article id="news-14" class="news-article">
+            <div class="news-date">2026.03.15</div>
+            <h2 class="news-title">【お知らせ】ゴールデンウィークの営業カレンダーを公開しました。</h2>
+            <div class="news-body">こんにちは！連休のご予定はお決まりですか？
+                古民家カフェ 結は、GW期間中（祝日）も休まず営業いたします！🎌
+                ぜひご家族やご友人と一緒に、リフレッシュしにいらしてくださいね🌿</div>
+        </article>
+
+        <article id="news-13" class="news-article">
+            <div class="news-date">2026.02.20</div>
+            <h2 class="news-title">【イベント】第3回「美味しい珈琲の淹れ方ワークショップ」開催のご案内</h2>
+            <div class="news-body">大好評につき第3回の開催決定！
+                マスター直伝の「おうちで美味しくペーパードリップするコツ」をお教えします🧑‍🏫
+                少人数制のアットホームなワークショップですので、初心者の方も大歓迎です！</div>
+        </article>
+
+        <article id="news-12" class="news-article">
+            <div class="news-date">2026.02.05</div>
+            <h2 class="news-title">【新メニュー】初物「せとか（みかん）のジューシータルト」</h2>
+            <div class="news-body">こんにちは！古民家カフェ 結です。
+                柑橘の大トロとも呼ばれる「せとか」を贅沢に使った、みずみずしい春のタルトが完成しました！✨
+                爽やかな甘みと香りをぜひお楽しみください🍃</div>
+        </article>
+
+        <article id="news-11" class="news-article">
+            <div class="news-date">2026.01.20</div>
+            <h2 class="news-title">【重要】原材料高騰に伴う一部商品の価格改定について</h2>
+            <div class="news-body">いつも古民家カフェ 結をご利用いただきありがとうございます。
+                大変心苦しいお知らせとなりますが、原材料高騰に伴い、来月より一部タルトの価格を改定させていただきます。
+                今後も品質の維持・向上に努めてまいりますので、何卒ご理解賜りますようお願い申し上げます🙇‍♂️</div>
+        </article>
+
+        <article id="news-10" class="news-article">
+            <div class="news-date">2026.01.04</div>
+            <h2 class="news-title">【ご挨拶】本年も「古民家カフェ 結」をよろしくお願いいたします。</h2>
+            <div class="news-body">旧年中はご愛顧いただき、誠にありがとうございました。
+                本年も皆様に「心ほどける穏やかなひととき」をお届けできるよう、スタッフ一同努めてまいります⛩
+                本年も古民家カフェ 結を、どうぞよろしくお願いいたします！</div>
+        </article>
+
+        <article id="news-9" class="news-article">
+            <div class="news-date">2025.12.15</div>
+            <h2 class="news-title">【お知らせ】年末年始の営業スケジュールについて</h2>
+            <div class="news-body">いつもご利用ありがとうございます。
+                誠に勝手ながら、12月29日〜1月3日まで、年末年始のお休みをいただきます🙇‍♂️
+                28日までは通常営業しておりますので、本年最後のカフェ納めにぜひお越しください☕️</div>
+        </article>
+
+        <article id="news-8" class="news-article">
+            <div class="news-date">2025.11.20</div>
+            <h2 class="news-title">【新メニュー】クリスマス特製「聖夜のベリーベリータルト」予約受付開始</h2>
+            <div class="news-body">こんにちは！古民家カフェ 結です。
+                今年のクリスマスは、たっぷりの苺とベリーを飾った特製タルトはいかがですか？🎅
+                本日よりご予約受付をスタートいたしました！数に限りがございますのでお早めにどうぞ。</div>
+        </article>
+
+        <article id="news-7" class="news-article">
+            <div class="news-date">2025.10.30</div>
+            <h2 class="news-title">【お知らせ】テイクアウトボックスのデザインが新しくなりました！</h2>
+            <div class="news-body">こんにちは！お持ち帰り用のタルト箱が、オリジナルデザインにリニューアルしました🎀
+                ちょっとした手土産や、ご家族へのお土産にもぜひご活用くださいね😊</div>
+        </article>
+
+        <article id="news-6" class="news-article">
+            <div class="news-date">2025.10.10</div>
+            <h2 class="news-title">【イベント】秋の夜長に。キャンドルナイト・カフェ開催のお知らせ</h2>
+            <div class="news-body">10月25日（土）の夜、店内照明を落とし、キャンドルの灯りだけで過ごす特別な夜カフェ営業をいたします🌙
+                いつもとは違う幻想的な「結」を体験しに来ませんか？あたたかいお飲み物をご用意してお待ちしております。</div>
+        </article>
+
+        <article id="news-5" class="news-article">
+            <div class="news-date">2025.09.20</div>
+            <h2 class="news-title">【新メニュー】秋の味覚「和栗とほうじ茶のモンブランタルト」</h2>
+            <div class="news-body">こんにちは！古民家カフェ 結です。
+                お待たせいたしました！秋の新作「和栗とほうじ茶のモンブランタルト」が本日からスタートします🍠
+                濃厚な栗のペーストとほうじ茶の香ばしさがベストマッチです✨</div>
+        </article>
+
+        <article id="news-4" class="news-article">
+            <div class="news-date">2025.08.15</div>
+            <h2 class="news-title">【お知らせ】店舗専用駐車場増設のご案内（合計5台分になりました）</h2>
+            <div class="news-body">いつもご来店ありがとうございます！
+                この度、店舗周辺の駐車場を増設し、合計5台分ご利用いただけるようになりました✨
+                お車でのご来店も、これまでよりスムーズになります。ぜひご利用ください！</div>
+        </article>
+
+        <article id="news-3" class="news-article">
+            <div class="news-date">2025.08.01</div>
+            <h2 class="news-title">【新メニュー】初秋限定「無花果（いちじく）たっぷり大人のタルト」</h2>
+            <div class="news-body">こんにちは！古民家カフェ 結です☕️
+                本日より、初秋限定「無花果（いちじく）たっぷり大人のタルト」が新登場！
+                赤ワインで軽くコンポートした無花果の深い味わいをぜひご堪能ください🍷</div>
+        </article>
+
+        <article id="news-2" class="news-article">
+            <div class="news-date">2025.07.15</div>
+            <h2 class="news-title">【お知らせ】LINE公式アカウントを開設しました！お友だち登録で特典あり</h2>
+            <div class="news-body">こんにちは！古民家カフェ 結です。
+                本日より、お店の最新情報をお届けするLINE公式アカウントを開設いたしました📱
+                これから季節の新作タルトや、お友だち限定のクーポンを配信していきますのでお楽しみに😊</div>
+        </article>
+
+        <article id="news-1" class="news-article">
+            <div class="news-date">2025.07.01</div>
+            <h2 class="news-title">古民家カフェ 結（ゆい）、本日グランドオープンいたしました。</h2>
+            <div class="news-body">皆様、はじめまして！古民家カフェ 結（ゆい）です☕️
+                本日ついに、当店がグランドオープンいたしました！
+                築80年の日本家屋の温もりの中で、皆様のお越しを心よりお待ちしております🌿</div>
+        </article>
+    </main>
+</body>
+
+</html>
