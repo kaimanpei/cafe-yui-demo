@@ -122,6 +122,51 @@
             transform: scale(1.02);
         }
 
+        /* News Section */
+        .news-section {
+            background-color: #fff;
+            padding: 3rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            margin-bottom: 4rem;
+        }
+
+        .news-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            border-top: 1px solid #EBE4D5;
+        }
+
+        .news-item {
+            display: flex;
+            align-items: baseline;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid #EBE4D5;
+            transition: background-color 0.3s;
+        }
+
+        .news-item:hover {
+            background-color: #faf8f5;
+        }
+
+        .news-date {
+            font-size: 0.95rem;
+            color: var(--accent-color);
+            width: 140px;
+            flex-shrink: 0;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-weight: bold;
+            letter-spacing: 0.05em;
+        }
+
+        .news-title {
+            font-size: 1.05rem;
+            color: var(--text-color);
+            margin: 0;
+            line-height: 1.6;
+        }
+
         /* Info Section */
         .info-section {
             background-color: #fff;
@@ -222,6 +267,19 @@
                 font-size: 2.5rem;
             }
 
+            .news-section {
+                padding: 1.5rem;
+            }
+
+            .news-item {
+                flex-direction: column;
+            }
+
+            .news-date {
+                margin-bottom: 0.5rem;
+                width: auto;
+            }
+
             .info-section {
                 padding: 1.5rem;
             }
@@ -262,10 +320,36 @@
             <div class="concept-text">
                 <p>築80年の日本家屋を改装した、木の息づかいを感じる空間。</p>
                 <p>契約農家から届く、その時一番美味しい旬のフルーツをたっぷり使った自家製タルト。<br>
-                    そして、タルトの繊細な甘みを引き立てるために店内で丁寧に焙煎した、こだわりの珈琲。</p>
+                    そして、タルトの繊細な甘みを引き立てるために店内で丁寧に焙煎したこだわりの珈琲。</p>
                 <p>日常の喧騒から離れたこの場所で、大切な方と、あるいはご友人と、<br>心ほどける穏やかなひとときをお過ごしください。</p>
             </div>
             <img src="./images/fruit_tart.png" alt="季節のフルーツタルト" class="featured-image">
+        </section>
+
+        <section class="news-section fade-up">
+            <h2 class="section-title">News</h2>
+            <ul class="news-list">
+                <li class="news-item">
+                    <div class="news-date">2024.11.15</div>
+                    <p class="news-title">冬の限定メニュー「林檎とシナモンの温かいタルト」が新登場しました。</p>
+                </li>
+                <li class="news-item">
+                    <div class="news-date">2024.10.20</div>
+                    <p class="news-title">11月の営業日に関するお知らせ（第3火曜日は特別営業いたします）</p>
+                </li>
+                <li class="news-item">
+                    <div class="news-date">2024.09.01</div>
+                    <p class="news-title">秋の新作「和栗とほうじ茶のモンブランタルト」が本日からスタートします。</p>
+                </li>
+                <li class="news-item">
+                    <div class="news-date">2024.08.10</div>
+                    <p class="news-title">LINE公式アカウントを開設しました！お得なクーポンや最新情報を配信します。</p>
+                </li>
+                <li class="news-item">
+                    <div class="news-date">2024.07.01</div>
+                    <p class="news-title">古民家カフェ 結（ゆい）、本日グランドオープンいたしました。</p>
+                </li>
+            </ul>
         </section>
 
         <section class="info-section fade-up">
