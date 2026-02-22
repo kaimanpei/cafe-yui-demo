@@ -118,6 +118,48 @@
                 font-size: 1.5rem;
             }
         }
+
+        /* Copy Button */
+        .copy-btn {
+            background-color: transparent;
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+            padding: 0.1rem 0.6rem;
+            margin-left: 1rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            vertical-align: middle;
+            font-family: inherit;
+        }
+
+        .copy-btn:hover {
+            background-color: var(--accent-color);
+            color: #fff;
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+            z-index: 2000;
+        }
+
+        .toast.show {
+            opacity: 1;
+            visibility: visible;
+        }
     </style>
 </head>
 
@@ -250,6 +292,43 @@
                 築80年の日本家屋の温もりの中で、皆様のお越しを心よりお待ちしております🌿</div>
         </article>
     </main>
+
+    <div id="toast" class="toast">URLをコピーしました！</div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const articles = document.querySelectorAll('.news-article');
+            const toast = document.getElementById('toast');
+
+            articles.forEach(article => {
+                const titleEl = article.querySelector('.news-title');
+                if (titleEl && article.id) {
+                    const btn = document.createElement('button');
+                    btn.className = 'copy-btn';
+                    btn.innerHTML = '🔗 URLコピー';
+
+                    // Style it inline to ensure it sits nicely with the title
+                    btn.style.float = 'right';
+                    btn.style.marginTop = '-0.2rem';
+
+                    btn.onclick = (e) => {
+                        e.preventDefault();
+                        const url = window.location.origin + window.location.pathname + '#' + article.id;
+
+                        navigator.clipboard.writeText(url).then(() => {
+                            toast.classList.add('show');
+                            setTimeout(() => {
+                                toast.classList.remove('show');
+                            }, 2000);
+                        }).catch(err => {
+                            console.error('Copy failed', err);
+                        });
+                    };
+                    titleEl.appendChild(btn);
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
