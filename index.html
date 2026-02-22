@@ -1,143 +1,343 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>古民家カフェ 結（ゆい）</title>
+    <title>古民家カフェ 結（ゆい） - 季節のフルーツタルトと自家焙煎珈琲</title>
+    <!-- プレミアムな印象を与えるため、Google Fontsから明朝体を読み込みます -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-bg: #F9F6F0;
+            /* 暖かみのある白 */
+            --text-color: #3D352E;
+            /* 濃いブラウン（黒より柔らかい印象） */
+            --accent-color: #A97C50;
+            /* タルトや木材を思わせるアクセントカラー */
+            --line-green: #06C755;
+            --fade-transition: all 0.8s ease-out;
+        }
+
         body {
-            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            font-family: 'Noto Serif JP', serif;
             margin: 0;
             padding: 0;
-            background-color: #fcf9f2; /* 薄い和風の背景色 */
-            color: #4a4a4a;
-            line-height: 1.6;
+            background-color: var(--primary-bg);
+            color: var(--text-color);
+            line-height: 1.8;
+            overflow-x: hidden;
         }
+
+        /* Hero Section */
         header {
-            background-color: #5c4033; /* コーヒー・木材をイメージした濃い茶色 */
-            color: white;
-            text-align: center;
-            padding: 2rem 1rem;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 2rem;
-            letter-spacing: 2px;
-        }
-        header p {
-            margin-top: 0.5rem;
-            font-size: 0.9rem;
-            opacity: 0.9;
-        }
-        main {
-            max-width: 800px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-        .hero-image {
-            width: 100%;
-            height: 300px;
-            background-color: #e0d8c8;
-            background-image: linear-gradient(45deg, #e0d8c8 25%, #d4cdbd 25%, #d4cdbd 50%, #e0d8c8 50%, #e0d8c8 75%, #d4cdbd 75%, #d4cdbd 100%);
-            background-size: 20px 20px;
+            position: relative;
+            height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 8px;
-            margin-bottom: 2rem;
-            color: #8a7b66;
-            font-weight: bold;
-        }
-        section {
-            background: white;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            margin-bottom: 2rem;
-        }
-        h2 {
-            color: #8b5a2b;
-            border-bottom: 2px solid #f0e6d2;
-            padding-bottom: 0.5rem;
-            margin-top: 0;
-        }
-        .info-list {
-            list-style: none;
-            padding: 0;
-        }
-        .info-list li {
-            margin-bottom: 1rem;
-            display: flex;
-        }
-        .info-list span {
-            font-weight: bold;
-            width: 100px;
-            flex-shrink: 0;
-            color: #5c4033;
-        }
-        .line-button {
-            display: block;
-            background-color: #06C755;
+            text-align: center;
             color: white;
+            background-color: #000;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('./images/cafe_exterior.png');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.7;
+            /* テキストを目立たせるために画像を少し暗くします */
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            animation: fadeIn 1.5s ease-out;
+            padding: 2rem;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin: 0;
+            letter-spacing: 0.15em;
+            font-weight: 300;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-top: 1rem;
+            letter-spacing: 0.1em;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Main Content Area */
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem;
+        }
+
+        .section-title {
             text-align: center;
-            padding: 1rem;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: bold;
+            font-size: 2rem;
+            color: var(--accent-color);
+            margin-bottom: 3rem;
+            font-weight: 400;
+            letter-spacing: 0.1em;
+        }
+
+        /* Concept Layout */
+        .concept-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 6rem;
+            text-align: center;
+        }
+
+        .concept-text {
+            max-width: 700px;
             font-size: 1.1rem;
-            margin: 2rem auto;
-            max-width: 300px;
-            box-shadow: 0 4px 6px rgba(6, 199, 85, 0.3);
-            transition: transform 0.2s;
+            margin-bottom: 3rem;
         }
-        .line-button:hover {
-            transform: scale(1.05);
+
+        img.featured-image {
+            width: 100%;
+            max-width: 800px;
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.5s;
         }
-        footer {
-            text-align: center;
+
+        img.featured-image:hover {
+            transform: scale(1.02);
+        }
+
+        /* Info Section */
+        .info-section {
+            background-color: #fff;
+            padding: 3rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            margin-bottom: 4rem;
+        }
+
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .info-table th,
+        .info-table td {
             padding: 1rem;
-            font-size: 0.8rem;
-            color: #888;
-            margin-top: 3rem;
+            border-bottom: 1px solid #EBE4D5;
+            text-align: left;
+        }
+
+        .info-table th {
+            width: 150px;
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+
+        /* LINE Button */
+        .cta-section {
+            text-align: center;
+            padding: 4rem 0;
+        }
+
+        .cta-text {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .line-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--line-green);
+            color: white;
+            text-decoration: none;
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            letter-spacing: 1px;
+            box-shadow: 0 8px 15px rgba(6, 199, 85, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .line-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 20px rgba(6, 199, 85, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--text-color);
+            color: #EBE4D5;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: var(--fade-transition);
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .info-section {
+                padding: 1.5rem;
+            }
+
+            .info-table th,
+            .info-table td {
+                display: block;
+                width: 100%;
+                border: none;
+                padding: 0.5rem 0;
+            }
+
+            .info-table th {
+                border-top: 1px solid #EBE4D5;
+                padding-top: 1rem;
+            }
+
+            .info-table tr:first-child th {
+                border-top: none;
+            }
         }
     </style>
 </head>
+
 <body>
 
     <header>
-        <h1>古民家カフェ 結（ゆい）</h1>
-        <p>季節のフルーツタルトと自家焙煎珈琲</p>
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <h1>古民家カフェ 結</h1>
+            <p>季節の記憶を、タルトと珈琲で。</p>
+        </div>
     </header>
 
     <main>
-        <div class="hero-image">
-            ※ここにはお店の外観やタルトの綺麗な写真が入るイメージです
-        </div>
-
-        <section>
-            <h2>店舗情報</h2>
-            <ul class="info-list">
-                <li><span>営業時間</span>11:00〜18:00</li>
-                <li><span>定休日</span>毎週火曜日・水曜日</li>
-                <li><span>アクセス</span>〇〇駅から徒歩10分（※ダミーです）</li>
-                <li><span>メニュー</span>季節のフルーツタルト、こだわりプリン、自家焙煎ブレンド珈琲など</li>
-            </ul>
+        <section class="concept-section fade-up">
+            <h2 class="section-title">Concept</h2>
+            <div class="concept-text">
+                <p>築80年の日本家屋を改装した、木の息づかいを感じる空間。</p>
+                <p>契約農家から届く、その時一番美味しい旬のフルーツをたっぷり使った自家製タルト。<br>
+                    そして、タルトの繊細な甘みを引き立てるために店内で丁寧に焙煎した、こだわりの珈琲。</p>
+                <p>日常の喧騒から離れたこの場所で、大切な方と、あるいはご友人と、<br>心ほどける穏やかなひとときをお過ごしください。</p>
+            </div>
+            <img src="./images/fruit_tart.png" alt="季節のフルーツタルト" class="featured-image">
         </section>
 
-        <section>
-            <h2>コンセプト</h2>
-            <p>築80年の日本家屋を改装した、木の温もりあふれる落ち着いた空間です。<br>
-               週末のほっと一息つきたい時間や、お友達とのおしゃべりに。<br>
-               地元の旬のフルーツをたっぷり使った自家製タルトと、店内で丁寧に焙煎したこだわりのコーヒーをご用意してお待ちしております。</p>
+        <section class="info-section fade-up">
+            <h2 class="section-title">Information</h2>
+            <table class="info-table">
+                <tr>
+                    <th>営業時間</th>
+                    <td>11:00 〜 18:00 (L.O. 17:30)</td>
+                </tr>
+                <tr>
+                    <th>定休日</th>
+                    <td>毎週火曜日・水曜日</td>
+                </tr>
+                <tr>
+                    <th>メニュー例</th>
+                    <td>
+                        季節のフルーツタルト (時価)<br>
+                        結 焙煎オリジナルブレンド (ホット/アイス)<br>
+                        平飼い卵の自家製プリン
+                    </td>
+                </tr>
+                <tr>
+                    <th>アクセス</th>
+                    <td>〇〇駅より徒歩10分。敷地内に駐車場3台分ございます。（※架空の店舗です）</td>
+                </tr>
+            </table>
         </section>
 
-        <!-- LINE公式アカウントへの誘導ボタン（リンク先はダミーか、後ほど実際の友だち追加リンクに変更） -->
-        <a href="#" class="line-button">LINEでお得な情報を受け取る</a>
+        <section class="cta-section fade-up">
+            <div class="cta-text">
+                <p>新作タルトのお知らせや、雨の日だけの特別なご案内などを配信しております。<br>ぜひLINEの友だち追加をお願いいたします。</p>
+            </div>
+            <!-- LINEの友だち追加リンク（講座用ダミー） -->
+            <a href="#" class="line-button">LINEでお得な情報を受け取る</a>
+        </section>
     </main>
 
     <footer>
-        &copy; 2024 古民家カフェ 結 All Rights Reserved. (架空の店舗です)
+        &copy; 2024 古民家カフェ 結 All Rights Reserved. (架空の店舗デモです)
     </footer>
 
+    <!-- スクロールアニメーション用のスクリプト -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const fadeElements = document.querySelectorAll('.fade-up');
+
+            const elementInView = (el, dividend = 1) => {
+                const elementTop = el.getBoundingClientRect().top;
+                return (elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend);
+            };
+
+            const displayScrollElement = (element) => {
+                element.classList.add('visible');
+            };
+
+            const handleScrollAnimation = () => {
+                fadeElements.forEach((el) => {
+                    if (elementInView(el, 1.25)) {
+                        displayScrollElement(el);
+                    }
+                })
+            }
+
+            // 初期ロード時の発火
+            handleScrollAnimation();
+
+            // スクロール時の発火
+            window.addEventListener('scroll', () => {
+                handleScrollAnimation();
+            });
+        });
+    </script>
 </body>
+
 </html>
